@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import {
-    signinWithEmailAndPassword,
-    signInWithGoogle,
-} from "../firebase/firebase";
+import { signinWithEmailAndPassword, signInWithGoogle } from "../firebase/firebase";
 
 const Login = () => {
     // State to hold the user inputs
@@ -27,14 +24,8 @@ const Login = () => {
         e.preventDefault();
         console.log(inputs);
         try {
-            const response = await signinWithEmailAndPassword(
-                inputs.email,
-                inputs.password
-            );
-            console.dir(response);
-            if (response?.uid) {
-                navigate("/");
-            }
+            await signinWithEmailAndPassword(inputs.email, inputs.password);
+            navigate("/");
         } catch (error) {
             console.dir(error);
         }
@@ -44,10 +35,8 @@ const Login = () => {
     // manage login with google functionality
     async function loginWithGoogle() {
         try {
-            const response = await signInWithGoogle();
-            if (response.uid) {
-                navigate("/");
-            }
+            await signInWithGoogle();
+            navigate("/");
         } catch (error) {
             throw new Error(error.message);
         }

@@ -17,22 +17,13 @@ const Home = () => {
             });
     }
 
-    if (loading) {
-        return <div>Loading...</div>;
-    } else if (error) {
-        return <div>Error: {error.message}</div>;
-    } else if (!user) {
-        navigate("/login", { replace: true });
-    } else {
-        console.dir(user);
-        return (
-            <>
-                <div>Home</div>
-                <h3>Welcome {user.email}</h3>
-                <button onClick={handleLogout}>Logout</button>
-            </>
-        );
-    }
+    return (
+        <>
+            <div>Home</div>
+            <h3>Welcome {user?.email}</h3>
+            <button onClick={handleLogout}>Logout</button>
+        </>
+    );
 };
 
 export default Home;

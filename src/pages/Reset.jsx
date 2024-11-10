@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { sendpasswordResetEmail } from "../firebase/firebase";
 
 const Reset = () => {
     // State to hold the user inputs
     const [email, setEmail] = useState("");
     // Navigate to login page after successful registration
-    const navigate = useNavigate();
 
     // Function to handle form submission
     async function handleSubmit(e) {
