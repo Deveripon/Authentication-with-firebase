@@ -1,12 +1,13 @@
-// PrivateRoute.js
-import { Navigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/firebase";
-const PrivateRoute = ({ children }) => {
-    const { user } = useAuthState(auth);
-    console.log(user);
 
-    return user ? children : <Navigate to='/login' />;
+import { Outlet, Navigate } from "react-router-dom";
+
+const PrivateRoutes = () => {
+    const [user, loading, error] = useAuthState(auth);
+    if (loading) return <p>Loading user data...</p>;
+
+    return <>{user ? <Outlet /> : <Navigate to='/login' />}</>;
 };
 
-export default PrivateRoute;
+export default PrivateRoutes;

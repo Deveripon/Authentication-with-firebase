@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { signinWithEmailAndPassword, signInWithGoogle } from "../firebase/firebase";
+import {
+    signinWithEmailAndPassword,
+    signInWithGoogle,
+} from "../firebase/firebase";
 
 const Login = () => {
     // State to hold the user inputs
